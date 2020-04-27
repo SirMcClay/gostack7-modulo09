@@ -30,7 +30,7 @@ export default function Dashboard() {
           <strong>10:00</strong>
           <span>Joaquim Lira</span>
         </Time>
-        <Time past>
+        <Time>
           <strong>11:00</strong>
           <span>Pedro Borges</span>
         </Time>
