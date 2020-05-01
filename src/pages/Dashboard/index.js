@@ -7,8 +7,9 @@ import {
   setMinutes,
   setSeconds,
   isBefore,
-  isEqual,
+  /* isEqual, */
   parseISO,
+  getHours,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
@@ -43,9 +44,16 @@ export default function Dashboard() {
         return {
           time: `${hour}:00h`,
           past: isBefore(compareDate, new Date()),
-          appointment: response.data.find(a =>
-            isEqual(parseISO(a.date), compareDate)
-          ),
+          appointment: response.data.find(a => {
+            /* isEqual(parseISO(a.date), compareDate); */
+            const dateDB = getHours(parseISO(a.date));
+            const dateList = getHours(compareDate);
+            let dateMatch = false;
+            if (dateDB === dateList) {
+              dateMatch = true;
+            }
+            return dateMatch;
+          }),
         };
       });
 
