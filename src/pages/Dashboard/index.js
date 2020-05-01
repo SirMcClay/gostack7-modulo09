@@ -45,7 +45,11 @@ export default function Dashboard() {
           time: `${hour}:00h`,
           past: isBefore(compareDate, new Date()),
           appointment: response.data.find(a => {
-            /* isEqual(parseISO(a.date), compareDate); */
+            /* //// For some reason which i do not figure out "isEqual"
+                    aways return false, therefore i solved using the logic
+                    in lines 53-59
+            isEqual(parseISO(a.date), compareDate);
+            */
             const dateDB = getHours(parseISO(a.date));
             const dateList = getHours(compareDate);
             let dateMatch = false;
